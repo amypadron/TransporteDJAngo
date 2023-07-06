@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <span>Empresa de Transporte</span>
+  <span class="example-spacer"></span>
+  <button mat-button routerLink="/dashboard/usuarios">Usuarios</button>
+  <button mat-button routerLink="/dashboard/trabajadores">Trabajador</button>
+  <button mat-button routerLink="/dashboard/camiones">Camión</button>
+  <button mat-button routerLink="/dashboard/viajes">Viaje</button>
+  <button mat-button routerLink="/dashboard/nominas">Nomina</button>
+  <button mat-button [matMenuTriggerFor]="menu">Reportes</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/dashboard">Carga por semana</button>
+          <button mat-menu-item routerLink="/dashboard">Km recorridos por semana</button>
+          <button mat-menu-item routerLink="/dashboard">Viajes por Camión</button>
+          <button mat-menu-item routerLink="/dashboard">Camión con mayor carga</button>
+          <button mat-menu-item routerLink="/dashboard">Camión con mayor provincias</button>
+        </mat-menu>
+
+  <span class="example-spacer"></span>
+  <mat-icon routerLink="/logout" aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
+</mat-toolbar>

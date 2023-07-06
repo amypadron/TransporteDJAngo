@@ -1,0 +1,64 @@
+
+<mat-toolbar>
+   <span *ngIf="modo=='crear'">Crear Viaje</span>
+  <span *ngIf="modo=='modificar'">Modificar Viaje</span>
+
+</mat-toolbar>
+<mat-card style="margin-top: 10px;">Formulario de Viaje
+  <form [formGroup]="form_viaje" (ngSubmit)="agregarViaje()">
+    <mat-grid-list cols="4" rowHeight="70px">
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Carga en Kg</mat-label>
+          <input matInput autocomplete="off" formControlName="carga_transportada">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Día de Partida</mat-label>
+          <input matInput [matDatepicker]="dia_semana" formControlName="dia_semana">
+          <mat-datepicker-toggle matIconSuffix [for]="dia_semana"></mat-datepicker-toggle>
+          <mat-datepicker #dia_semana></mat-datepicker>
+
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Km Recorrido</mat-label>
+          <input matInput autocomplete="off" formControlName="km_recorrido">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Provincias Recorridas</mat-label>
+          <input matInput autocomplete="off" formControlName="provincias_recorridas">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Día de Regreso</mat-label>
+          <input matInput [matDatepicker]="dia_regreso" formControlName="dia_regreso">
+          <mat-datepicker-toggle matIconSuffix [for]="dia_regreso"></mat-datepicker-toggle>
+          <mat-datepicker #dia_regreso></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button style="margin-right: 20px;">Volver</button>
+        <button type="submit" *ngIf="modo=='crear'" [disabled]="form_viaje.invalid" mat-raised-button
+          color="primary">Aceptar</button>
+        <button type="submit" *ngIf="modo=='modificar'" [disabled]="form_viaje.invalid" mat-raised-button
+          color="primary">Modificar</button>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-card>

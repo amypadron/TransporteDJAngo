@@ -1,0 +1,129 @@
+<mat-toolbar>
+  <span *ngIf="modo=='crear'">Crear Trabajador</span>
+  <span *ngIf="modo=='modificar'">Modificar Trabajador</span>
+
+</mat-toolbar>
+<mat-card style="margin-top: 10px;">Formulario de Trabajador
+  <form [formGroup]="form_trabajador" (ngSubmit)="gestionarTrabajador()">
+    <mat-grid-list cols="4" rowHeight="70px">
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Nombre</mat-label>
+          <input matInput autocomplete="off" formControlName="nombre">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Carnet</mat-label>
+          <input matInput autocomplete="off" formControlName="ci">
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Sexo </mat-label>
+          <mat-select formControlName="sexo">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
+              {{sexo.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Teléfono</mat-label>
+          <input matInput autocomplete="off" formControlName="telefono">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Dirección Particular: </mat-label>
+          <input matInput autocomplete="off" formControlName="direccion_particular">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Años de Experiencia</mat-label>
+          <input matInput autocomplete="off" formControlName="anios_experiencia">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Nivel Escolar</mat-label>
+          <mat-select formControlName="nivel_escolar">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let nivel of niveles" [value]="nivel.value">
+              {{nivel.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Clasificación </mat-label>
+          <mat-select formControlName="clasificacion">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let clasificacion of clasificaciones" [value]="clasificacion.value">
+              {{clasificacion.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Cargo</mat-label>
+          <input matInput autocomplete="off" formControlName="cargo">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Tipo</mat-label>
+          <input matInput autocomplete="off" formControlName="tipo">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Cantidad de Viajes</mat-label>
+          <input matInput autocomplete="off" formControlName="cantidad_viajes">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Evaluacion mensual</mat-label>
+          <input matInput autocomplete="off" formControlName="evaluacion_mensual">
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="ancho">
+          <mat-label>Salario Básico</mat-label>
+          <input matInput autocomplete="off" formControlName="salario_basico">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button style="margin-right: 20px;">Volver</button>
+        <button type="submit" *ngIf="modo=='crear'" [disabled]="form_trabajador.invalid" mat-raised-button
+          color="primary">Aceptar</button>
+        <button type="submit" *ngIf="modo=='modificar'" [disabled]="form_trabajador.invalid" mat-raised-button
+          color="primary">Modificar</button>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-card>

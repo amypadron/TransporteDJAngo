@@ -1,0 +1,47 @@
+
+<mat-toolbar>
+  <span *ngIf="modo=='crear'">Crear Nómina</span>
+ <span *ngIf="modo=='modificar'">Modificar Nómina</span>
+
+</mat-toolbar>
+<mat-card style="margin-top: 10px;">Formulario de Nomina
+ <form [formGroup]="form_nomina" (ngSubmit)="agregarNomina()">
+   <mat-grid-list cols="4" rowHeight="70px">
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Cantidad de Días</mat-label>
+         <input matInput autocomplete="off" formControlName="cantidad_dias">
+       </mat-form-field>
+     </mat-grid-tile>
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Salario</mat-label>
+         <input matInput autocomplete="off" formControlName="salario">
+       </mat-form-field>
+     </mat-grid-tile>
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field class="ancho">
+        <mat-label>Mes</mat-label>
+        <input matInput [matDatepicker]="mes" formControlName="mes">
+        <mat-datepicker-toggle matIconSuffix [for]="mes"></mat-datepicker-toggle>
+        <mat-datepicker #mes></mat-datepicker>
+
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <button mat-raised-button style="margin-right: 20px;">Volver</button>
+       <button type="submit" *ngIf="modo=='crear'" [disabled]="form_nomina.invalid" mat-raised-button
+         color="primary">Aceptar</button>
+       <button type="submit" *ngIf="modo=='modificar'" [disabled]="form_nomina.invalid" mat-raised-button
+         color="primary">Modificar</button>
+
+     </mat-grid-tile>
+   </mat-grid-list>
+ </form>
+</mat-card>

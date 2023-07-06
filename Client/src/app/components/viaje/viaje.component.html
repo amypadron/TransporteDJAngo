@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <span>Viajes</span>
+  <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" routerLink="/dashboard/viajes/crear-viaje">Agregar</button>
+</mat-toolbar>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+  <ng-container matColumnDef="carga_transportada">
+    <th mat-header-cell *matHeaderCellDef> Carga Transportada </th>
+    <td mat-cell *matCellDef="let element"> {{element.carga_transportada}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="km_recorrido">
+    <th mat-header-cell *matHeaderCellDef> Km Recorrido </th>
+    <td mat-cell *matCellDef="let element"> {{element.km_recorrido}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="dia_semana">
+    <th mat-header-cell *matHeaderCellDef> Día de Partida </th>
+    <td mat-cell *matCellDef="let element"> {{element.dia_semana}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="provincias_recorridas">
+    <th mat-header-cell *matHeaderCellDef> Provincias Recorridas </th>
+    <td mat-cell *matCellDef="let element"> {{element.provincias_recorridas}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dia_regreso">
+    <th mat-header-cell *matHeaderCellDef>Día de Regreso </th>
+    <td mat-cell *matCellDef="let element"> {{element.dia_regreso}} </td>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;">Acciones</th>
+    <td mat-cell *matCellDef="let element," style="text-align: center;">
+
+      <a class="pointer" style="color: #1878b0;" matTooltip="Ver Datos Viaje">
+        <mat-icon>search</mat-icon>
+      </a>
+      <a class="pointer" routerLink="/dashboard/viajes/modificar/{{element.id}}"     style="color: #1f516f;" matTooltip="Editar Datos Viaje">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a class="pointer" (click)="eliminarViaje(element.id)"  style="color: #e15639;" matTooltip="Eliminar Viaje">
+        <mat-icon>delete</mat-icon>
+      </a>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

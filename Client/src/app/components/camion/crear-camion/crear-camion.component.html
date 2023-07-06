@@ -1,0 +1,58 @@
+
+<mat-toolbar>
+  <span *ngIf="modo=='crear'">Crear Camión</span>
+ <span *ngIf="modo=='modificar'">Modificar Camión</span>
+
+</mat-toolbar>
+<mat-card style="margin-top: 10px;">Formulario de Camión
+ <form [formGroup]="form_camion" (ngSubmit)="agregarCamion()">
+   <mat-grid-list cols="4" rowHeight="70px">
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Chapa</mat-label>
+         <input matInput autocomplete="off" formControlName="chapa">
+       </mat-form-field>
+     </mat-grid-tile>
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Marca</mat-label>
+         <input matInput autocomplete="off" formControlName="marca">
+       </mat-form-field>
+     </mat-grid-tile>
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Año de fabricación</mat-label>
+         <input matInput autocomplete="off" formControlName="anio_fabricacion">
+       </mat-form-field>
+     </mat-grid-tile>
+
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Cantidad de Reparaciones</mat-label>
+         <input matInput autocomplete="off" formControlName="cantidad_reparaciones">
+       </mat-form-field>
+     </mat-grid-tile>
+
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <mat-form-field class="ancho">
+         <mat-label>Gasto por km</mat-label>
+         <input matInput autocomplete="off" formControlName="gasto_km">
+       </mat-form-field>
+     </mat-grid-tile>
+
+     <mat-grid-tile [colspan]="1" [rowspan]="1">
+       <button mat-raised-button style="margin-right: 20px;">Volver</button>
+       <button type="submit" *ngIf="modo=='crear'" [disabled]="form_camion.invalid" mat-raised-button
+         color="primary">Aceptar</button>
+       <button type="submit" *ngIf="modo=='modificar'" [disabled]="form_camion.invalid" mat-raised-button
+         color="primary">Modificar</button>
+
+     </mat-grid-tile>
+   </mat-grid-list>
+ </form>
+</mat-card>
